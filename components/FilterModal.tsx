@@ -1,17 +1,17 @@
-import { useTheme } from '@/contexts/ThemeContext';
-import { AntDesign } from '@expo/vector-icons';
-import Slider from '@react-native-community/slider';
-import React, { useState } from 'react';
-import { Modal, TouchableOpacity, View } from 'react-native';
-import { ms, ScaledSheet } from 'react-native-size-matters';
-import { ThemedText } from './ThemedText';
+import { useTheme } from "@/contexts/ThemeContext";
+import { AntDesign } from "@expo/vector-icons";
+import Slider from "@react-native-community/slider";
+import React, { useState } from "react";
+import { Modal, TouchableOpacity, View } from "react-native";
+import { ms, ScaledSheet } from "react-native-size-matters";
+import { ThemedText } from "./ThemedText";
 
 interface FilterModalProps {
   visible: boolean;
   onClose: () => void;
   onFilterRating: (rating: number) => void;
   onFilterPrice: (minPrice: number, maxPrice: number) => void;
-  onResetFilters: () => void; 
+  onResetFilters: () => void;
 }
 
 const FilterModal: React.FC<FilterModalProps> = ({
@@ -19,19 +19,17 @@ const FilterModal: React.FC<FilterModalProps> = ({
   onClose,
   onFilterRating,
   onFilterPrice,
-  onResetFilters, 
+  onResetFilters,
 }) => {
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(1000);
   const [rating, setRating] = useState(0);
 
-  
- 
-const handleApplyFilters = () => {
-  onFilterPrice(minPrice, maxPrice);
-  onFilterRating(rating);
-  onClose();
-};
+  const handleApplyFilters = () => {
+    onFilterPrice(minPrice, maxPrice);
+    onFilterRating(rating);
+    onClose();
+  };
   const handleReset = () => {
     setMinPrice(0);
     setMaxPrice(1000);
@@ -40,7 +38,7 @@ const handleApplyFilters = () => {
     onClose();
   };
 
-  const {colors} = useTheme();
+  const { colors } = useTheme();
 
   return (
     <Modal visible={visible} animationType="slide" transparent>
@@ -92,9 +90,9 @@ const handleApplyFilters = () => {
               {[1, 2, 3, 4, 5].map((star) => (
                 <TouchableOpacity key={star} onPress={() => setRating(star)}>
                   <AntDesign
-                    name={star <= rating ? 'star' : 'staro'}
+                    name={star <= rating ? "star" : "staro"}
                     size={ms(30)}
-                    color={star <= rating ? '#FFD700' : '#d3d3d3'}
+                    color={star <= rating ? "#FFD700" : "#d3d3d3"}
                   />
                 </TouchableOpacity>
               ))}
@@ -102,11 +100,23 @@ const handleApplyFilters = () => {
           </View>
 
           <View style={styles.buttonContainer}>
-            <TouchableOpacity style={[styles.resetButton]} onPress={handleReset}>
-              <ThemedText style={[styles.resetButtonText,{color:colors.primary}]}>Reset Filters</ThemedText>
+            <TouchableOpacity
+              style={[styles.resetButton]}
+              onPress={handleReset}
+            >
+              <ThemedText
+                style={[styles.resetButtonText, { color: colors.primary }]}
+              >
+                Reset Filters
+              </ThemedText>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.applyButton, { backgroundColor: colors.primary }]} onPress={handleApplyFilters}>
-              <ThemedText style={styles.applyButtonText}>Apply Filters</ThemedText>
+            <TouchableOpacity
+              style={[styles.applyButton, { backgroundColor: colors.primary }]}
+              onPress={handleApplyFilters}
+            >
+              <ThemedText style={styles.applyButtonText}>
+                Apply Filters
+              </ThemedText>
             </TouchableOpacity>
           </View>
         </View>
@@ -118,75 +128,75 @@ const handleApplyFilters = () => {
 const styles = ScaledSheet.create({
   modalContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: "flex-end",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
-  modalContent: { 
+  modalContent: {
     borderTopLeftRadius: "20@s",
     borderTopRightRadius: "20@s",
     padding: "18@ms",
-    maxHeight: '80%',
+    maxHeight: "80%",
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: "20@vs",
   },
   title: {
     fontSize: "20@ms",
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   section: {
     marginBottom: "20@vs",
   },
   sectionTitle: {
     fontSize: "16@ms",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: "10@vs",
   },
   priceRange: {
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
     marginBottom: "10@vs",
   },
   sliderContainer: {
     paddingHorizontal: "10@s",
   },
   slider: {
-    width: '100%',
+    width: "100%",
     height: "40@vs",
   },
   ratingContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    justifyContent: "space-around",
     paddingHorizontal: "20@s",
   },
   buttonContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: "20@vs",
   },
   resetButton: {
     borderWidth: 1,
-    borderColor: '#2A4BA0',
+    borderColor: "#2A4BA0",
     padding: "15@ms",
     borderRadius: "8@ms",
     flex: 1,
     marginRight: "10@s",
-    alignItems: 'center',
+    alignItems: "center",
   },
-  resetButtonText: { 
-    fontWeight: 'bold',
+  resetButtonText: {
+    fontWeight: "bold",
   },
-  applyButton: { 
+  applyButton: {
     padding: "15@ms",
     borderRadius: "8@ms",
     flex: 1,
-    alignItems: 'center',
+    alignItems: "center",
   },
-  applyButtonText: { 
-    fontWeight: 'bold',
+  applyButtonText: {
+    fontWeight: "bold",
   },
 });
 

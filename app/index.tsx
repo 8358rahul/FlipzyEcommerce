@@ -19,9 +19,11 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import { ms, ScaledSheet } from "react-native-size-matters";
-
 
 const ProductList = () => {
   const {
@@ -72,11 +74,11 @@ const ProductList = () => {
     resetFilters();
   };
 
-  useEffect(()=>{
-    if(error){
-      Alert.alert('Error', error)
+  useEffect(() => {
+    if (error) {
+      Alert.alert("Error", error);
     }
-  },[error])
+  }, [error]);
 
   if (loading) {
     return (
@@ -85,10 +87,10 @@ const ProductList = () => {
       </View>
     );
   }
- 
+
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: colors.background,}]}
+      style={[styles.container, { backgroundColor: colors.background }]}
     >
       <View style={styles.header}>
         {!isSearchFocused && <ThemeToggle />}
@@ -158,7 +160,7 @@ const ProductList = () => {
         ListEmptyComponent={
           <NoDataFound
             onPress={() => {
-              if(error){
+              if (error) {
                 fetchProducts();
               }
               setSearchQuery("");
@@ -183,8 +185,7 @@ const ProductList = () => {
 
 const styles = ScaledSheet.create({
   container: {
-    flex: 1,  
-
+    flex: 1,
   },
   wishlistButton: {
     position: "relative",
@@ -219,7 +220,7 @@ const styles = ScaledSheet.create({
     alignItems: "center",
     padding: "5@ms",
     elevation: 3,
-    zIndex: 10,    
+    zIndex: 10,
   },
   filterButton: {
     marginLeft: "10@s",

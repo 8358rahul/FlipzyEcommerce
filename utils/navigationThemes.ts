@@ -1,4 +1,4 @@
-// utils/navigationThemes.ts
+ 
 import { Colors } from '@/constants/Colors';
 import { DarkTheme, DefaultTheme } from '@react-navigation/native';
 

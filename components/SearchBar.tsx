@@ -32,14 +32,13 @@ const SearchBar: React.FC<SearchBarProps> = ({
 }) => {
   const [isFocused, setIsFocused] = useState(false);
   const { colors } = useTheme();
-    const inputRef = useRef<TextInput>(null);
+  const inputRef = useRef<TextInput>(null);
 
-     useEffect(() => {
+  useEffect(() => {
     if (isExpanded && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isExpanded]);
-
 
   const handleFocus = () => {
     setIsFocused(true);
@@ -50,9 +49,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
     setIsExpanded(true);
   };
 
- 
-
-    const handleBlur = () => {
+  const handleBlur = () => {
     setTimeout(() => {
       setIsFocused(false);
       onBlur();
@@ -75,16 +72,15 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onPress={handleSearchPress}
         />
         <TextInput
-            ref={inputRef}
-          style={styles.input}
+          ref={inputRef}
+          style={[styles.input, { color: colors.text }]}
           placeholder="Search products..."
           placeholderTextColor={colors.placeholderTextColor}
           value={value}
           onChangeText={onChangeText}
           onFocus={handleFocus}
           onBlur={handleBlur}
-                      onSubmitEditing={() => Keyboard.dismiss()}
-
+          onSubmitEditing={() => Keyboard.dismiss()}
         />
         {value ? (
           <TouchableOpacity onPress={() => onChangeText("")}>
@@ -142,15 +138,14 @@ const styles = ScaledSheet.create({
     backgroundColor: "#f0f0f0",
     borderRadius: "25@ms",
     paddingHorizontal: "15@ms",
-    height: "40@vs",
+    height: "35@vs",
   },
   icon: {
     marginRight: 10,
   },
   input: {
     flex: 1,
-    fontSize: 16,
-    color: "#333",
+    fontSize: "14@ms", 
   },
   suggestionsContainer: {
     position: "absolute",

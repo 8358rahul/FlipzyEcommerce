@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-import { Product } from '../types/product';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { Product } from "../types/product";
 
 interface WishlistState {
   wishlist: Product[];
@@ -20,14 +20,16 @@ export const useWishlistStore = create<WishlistState>()(
         }
       },
       removeFromWishlist: (productId) => {
-        set({ wishlist: get().wishlist.filter((item) => item.id !== productId) });
+        set({
+          wishlist: get().wishlist.filter((item) => item.id !== productId),
+        });
       },
       isInWishlist: (productId) => {
         return get().wishlist.some((item) => item.id === productId);
       },
     }),
     {
-      name: 'wishlist-storage',
+      name: "wishlist-storage",
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

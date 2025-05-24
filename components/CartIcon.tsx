@@ -3,18 +3,14 @@ import { useCartStore } from "@/store/useCartStore";
 import { AntDesign } from "@expo/vector-icons";
 import { router } from "expo-router";
 import React, { useEffect } from "react";
-import {
-  Animated,
-  TouchableOpacity,
-  View
-} from "react-native";
+import { Animated, TouchableOpacity, View } from "react-native";
 import { ms, ScaledSheet } from "react-native-size-matters";
 import { ThemedText } from "./ThemedText";
 
 const CartIcon: React.FC = () => {
   const totalItems = useCartStore((state) => state.totalItems());
   const scaleValue = new Animated.Value(1);
-  const {colors} = useTheme()
+  const { colors } = useTheme();
 
   useEffect(() => {
     if (totalItems > 0) {
@@ -66,7 +62,7 @@ const styles = ScaledSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  badgeText: { 
+  badgeText: {
     fontSize: "10@ms",
     fontWeight: "bold",
     color: "white",

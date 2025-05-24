@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { create } from 'zustand';
-import { createJSONStorage, persist } from 'zustand/middleware';
-import { CartItem, Product } from '../types/product';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { create } from "zustand";
+import { createJSONStorage, persist } from "zustand/middleware";
+import { CartItem, Product } from "../types/product";
 
 interface CartState {
   cart: CartItem[];
@@ -23,7 +23,9 @@ export const useCartStore = create<CartState>()(
         if (existingItem) {
           set({
             cart: get().cart.map((item) =>
-              item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+              item.id === product.id
+                ? { ...item, quantity: item.quantity + 1 }
+                : item
             ),
           });
         } else {
@@ -36,7 +38,9 @@ export const useCartStore = create<CartState>()(
       increaseQuantity: (productId) => {
         set({
           cart: get().cart.map((item) =>
-            item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+            item.id === productId
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
           ),
         });
       },
@@ -45,7 +49,9 @@ export const useCartStore = create<CartState>()(
         if (existingItem && existingItem.quantity > 1) {
           set({
             cart: get().cart.map((item) =>
-              item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+              item.id === productId
+                ? { ...item, quantity: item.quantity - 1 }
+                : item
             ),
           });
         } else {
@@ -53,12 +59,16 @@ export const useCartStore = create<CartState>()(
         }
       },
       clearCart: () => set({ cart: [] }),
-      totalItems: () => get().cart.reduce((total, item) => total + item.quantity, 0),
+      totalItems: () =>
+        get().cart.reduce((total, item) => total + item.quantity, 0),
       totalPrice: () =>
-        get().cart.reduce((total, item) => total + item.price * item.quantity, 0),
+        get().cart.reduce(
+          (total, item) => total + item.price * item.quantity,
+          0
+        ),
     }),
     {
-      name: 'cart-storage',
+      name: "cart-storage",
       storage: createJSONStorage(() => AsyncStorage),
     }
   )

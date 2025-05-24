@@ -77,7 +77,7 @@ const Cart = () => {
             data={cart}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
-            contentContainerStyle={[styles.list, {  }]}
+            contentContainerStyle={[styles.list, {}]}
           />
           <View
             style={[

@@ -13,7 +13,7 @@ import {
   Platform,
   ScrollView,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { ms, ScaledSheet, vs } from "react-native-size-matters";
 
@@ -24,9 +24,8 @@ const ProductDetail = () => {
     useWishlistStore();
   const { addToCart } = useCartStore();
   const isWishlisted = isInWishlist(product.id);
-  const navigation = useNavigation(); 
-  const {colors} = useTheme(); 
-
+  const navigation = useNavigation();
+  const { colors } = useTheme();
 
   useEffect(() => {
     navigation.setOptions({
@@ -50,17 +49,17 @@ const ProductDetail = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={{ flex: 1,backgroundColor: colors.background }}
+      style={{ flex: 1, backgroundColor: colors.background }}
       keyboardVerticalOffset={Platform.OS === "ios" ? vs(60) : 0} // Adjust if header/navbar is present
     >
-      <ScrollView contentContainerStyle={[styles.container,]}>
-        <View style={{backgroundColor:'white'}}>
-        <Image
-          source={{ uri: product.image }}
-          style={styles.image}
-          resizeMode="contain"
-        />
-</View>
+      <ScrollView contentContainerStyle={[styles.container]}>
+        <View style={{ backgroundColor: "white" }}>
+          <Image
+            source={{ uri: product.image }}
+            style={styles.image}
+            resizeMode="contain"
+          />
+        </View>
         <View style={styles.details}>
           <View style={styles.header}>
             <ThemedText style={styles.title}>{product.title}</ThemedText>
@@ -68,12 +67,14 @@ const ProductDetail = () => {
               <AntDesign
                 name={isWishlisted ? "heart" : "hearto"}
                 size={ms(20)}
-                color={isWishlisted ? "red" :colors.icon}
+                color={isWishlisted ? "red" : colors.icon}
               />
             </TouchableOpacity>
           </View>
 
-          <ThemedText style={[styles.price,{color:colors.primary}]}>${product.price.toFixed(2)}</ThemedText>
+          <ThemedText style={[styles.price, { color: colors.primary }]}>
+            ${product.price.toFixed(2)}
+          </ThemedText>
 
           <View style={styles.rating}>
             <AntDesign name="star" size={ms(16)} color="#FFD700" />
@@ -82,12 +83,19 @@ const ProductDetail = () => {
             </ThemedText>
           </View>
 
-          <ThemedText style={styles.category}>Category: {product.category}</ThemedText>
+          <ThemedText style={styles.category}>
+            Category: {product.category}
+          </ThemedText>
 
-          <ThemedText style={styles.description}>{product.description}</ThemedText>
+          <ThemedText style={styles.description}>
+            {product.description}
+          </ThemedText>
 
           <TouchableOpacity
-            style={[styles.addToCartButton,{backgroundColor:colors.primary}]}
+            style={[
+              styles.addToCartButton,
+              { backgroundColor: colors.primary },
+            ]}
             onPress={handleAddToCart}
           >
             <ThemedText style={styles.addToCartText}>Add to Cart</ThemedText>
@@ -102,13 +110,13 @@ const ProductDetail = () => {
 
 const styles = ScaledSheet.create({
   container: {
-    flexGrow: 1, 
+    flexGrow: 1,
     justifyContent: "flex-end",
-    paddingBottom: "20@vs", 
+    paddingBottom: "20@vs",
   },
   image: {
     width: "100%",
-    height: "300@vs", 
+    height: "300@vs",
   },
   details: {
     padding: "20@ms",
@@ -127,7 +135,7 @@ const styles = ScaledSheet.create({
   },
   price: {
     fontSize: "24@ms",
-    fontWeight: "bold", 
+    fontWeight: "bold",
     marginBottom: "10@vs",
   },
   rating: {
@@ -140,7 +148,7 @@ const styles = ScaledSheet.create({
     fontSize: "16@ms",
   },
   category: {
-    fontSize: "16@ms", 
+    fontSize: "16@ms",
     marginBottom: 15,
     textTransform: "capitalize",
   },
@@ -149,13 +157,13 @@ const styles = ScaledSheet.create({
     lineHeight: "24@vs",
     marginBottom: "20@vs",
   },
-  addToCartButton: { 
+  addToCartButton: {
     padding: 15,
     borderRadius: 8,
     alignItems: "center",
     marginBottom: 20,
   },
-  addToCartText: { 
+  addToCartText: {
     fontSize: "18@ms",
     fontWeight: "bold",
   },

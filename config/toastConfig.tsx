@@ -1,5 +1,5 @@
-import { AntDesign } from '@expo/vector-icons';
-import { StyleSheet, Text, View } from 'react-native';
+import { AntDesign } from "@expo/vector-icons";
+import { StyleSheet, Text, View } from "react-native";
 
 export const toastConfig = {
   success: ({ text1, text2, props, ...rest }: any) => (
@@ -28,26 +28,26 @@ export const toastConfig = {
 
 const styles = StyleSheet.create({
   successContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#4BB543',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#4BB543",
     padding: 15,
     borderRadius: 8,
     marginHorizontal: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
     elevation: 5,
   },
   errorContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    backgroundColor: '#FF3333',
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: "#FF3333",
     padding: 15,
     borderRadius: 8,
     marginHorizontal: 20,
-    shadowColor: '#000',
+    shadowColor: "#000",
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
@@ -60,12 +60,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text1: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     fontSize: 16,
   },
   text2: {
-    color: 'white',
+    color: "white",
     fontSize: 14,
     marginTop: 2,
   },
