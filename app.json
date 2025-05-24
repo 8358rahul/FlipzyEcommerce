@@ -8,6 +8,12 @@
     "scheme": "flipzy",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "jsEngine": "hermes",
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#63b3ed"
+    },
     "ios": {
       "supportsTablet": true
     },
@@ -16,7 +22,8 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "package": "com.flipzy.in"
     },
     "web": {
       "bundler": "metro",
@@ -37,6 +44,12 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "61648b45-e09f-4842-b39e-f50811a42a58"
+      }
     }
   }
 }
